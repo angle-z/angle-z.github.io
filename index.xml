@@ -1,0 +1,17 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Angle-z&#39;s Blog</title>
+        <link>https://angle-z.github.io/</link>
+        <description>Angle-z&#39;s Blog-Keep learning algorithm，unity3D</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>angle_work@qq.com (Angle-z)</managingEditor>
+            <webMaster>angle_work@qq.com (Angle-z)</webMaster><lastBuildDate>Wed, 26 Jan 2022 16:07:21 &#43;0800</lastBuildDate>
+            <atom:link href="https://angle-z.github.io/index.xml" rel="self" type="application/rss+xml" />
+        <item>
+    <title>Hello Angle-z</title>
+    <link>https://angle-z.github.io/hello_angle-z/</link>
+    <pubDate>Wed, 26 Jan 2022 16:07:21 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://angle-z.github.io/hello_angle-z/</guid>
+    <description><![CDATA[<p>简介，一句话描述</p>]]></description>
+</item></channel>
+</rss>
