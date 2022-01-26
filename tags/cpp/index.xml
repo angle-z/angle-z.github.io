@@ -1,12 +1,10 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>Angle-z&#39;s Blog</title>
-        <link>https://angle-z.github.io/</link>
-        <description>Angle-z&#39;s Blog-Keep learning algorithm，unity3D</description>
+        <title>Cpp - Tag - Angle-z&#39;s Blog</title>
+        <link>https://angle-z.github.io/tags/cpp/</link>
+        <description>Cpp - Tag - Angle-z&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>angle_work@qq.com (Angle-z)</managingEditor>
-            <webMaster>angle_work@qq.com (Angle-z)</webMaster><lastBuildDate>Wed, 26 Jan 2022 18:14:39 &#43;0800</lastBuildDate>
-            <atom:link href="https://angle-z.github.io/index.xml" rel="self" type="application/rss+xml" />
-        <item>
+            <webMaster>angle_work@qq.com (Angle-z)</webMaster><lastBuildDate>Wed, 26 Jan 2022 18:14:39 &#43;0800</lastBuildDate><atom:link href="https://angle-z.github.io/tags/cpp/" rel="self" type="application/rss+xml" /><item>
     <title>【LeetCode】有序数组的平方</title>
     <link>https://angle-z.github.io/algorithm_day1/</link>
     <pubDate>Wed, 26 Jan 2022 18:14:39 &#43;0800</pubDate>

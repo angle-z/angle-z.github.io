@@ -4,12 +4,12 @@
         <link>https://angle-z.github.io/posts/</link>
         <description>All Posts | Angle-z&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>angle_work@qq.com (Angle-z)</managingEditor>
-            <webMaster>angle_work@qq.com (Angle-z)</webMaster><lastBuildDate>Wed, 26 Jan 2022 16:07:21 &#43;0800</lastBuildDate><atom:link href="https://angle-z.github.io/posts/" rel="self" type="application/rss+xml" /><item>
-    <title>Hello Angle-z</title>
-    <link>https://angle-z.github.io/hello_angle-z/</link>
-    <pubDate>Wed, 26 Jan 2022 16:07:21 &#43;0800</pubDate>
+            <webMaster>angle_work@qq.com (Angle-z)</webMaster><lastBuildDate>Wed, 26 Jan 2022 18:14:39 &#43;0800</lastBuildDate><atom:link href="https://angle-z.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>【LeetCode】有序数组的平方</title>
+    <link>https://angle-z.github.io/algorithm_day1/</link>
+    <pubDate>Wed, 26 Jan 2022 18:14:39 &#43;0800</pubDate>
     <author>Author</author>
-    <guid>https://angle-z.github.io/hello_angle-z/</guid>
-    <description><![CDATA[<p>简介，一句话描述</p>]]></description>
+    <guid>https://angle-z.github.io/algorithm_day1/</guid>
+    <description><![CDATA[<p>给你一个按非递减顺序排序的整数数组 nums，返回每个数字的平方组成的新数组，要求也按非递减顺序排序。</p>]]></description>
 </item></channel>
 </rss>
