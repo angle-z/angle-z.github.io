@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>PlaneFire_4 - Angle-z&#39;s Blog</title><meta name="Description" content="Angle-z&#39;s Blog-Keep learning algorithm，unity3D"><meta property="og:title" content="PlaneFire_4" />
+<meta property="og:description" content="「持续按键子弹间隔时间发射」「随机血条」「开始和结束界面」「在最后一个场景中得到前面场景对象的函数/值」「陨石坠落」" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://angle-z.com/planefire_4/" /><meta property="og:image" content="https://angle-z.com/logo.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-02-22T17:16:53+08:00" />
+<meta property="article:modified_time" content="2022-02-22T17:16:53+08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://angle-z.com/logo.jpg"/>
+
+<meta name="twitter:title" content="PlaneFire_4"/>
+<meta name="twitter:description" content="「持续按键子弹间隔时间发射」「随机血条」「开始和结束界面」「在最后一个场景中得到前面场景对象的函数/值」「陨石坠落」"/>
+<meta name="application-name" content="Angle-z&#39;s Blog">
+<meta name="apple-mobile-web-app-title" content="Angle-z&#39;s Blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/logo.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://angle-z.com/planefire_4/" /><link rel="prev" href="https://angle-z.com/planefire_3/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "PlaneFire_4",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/angle-z.com\/planefire_4\/"
+        },"genre": "posts","keywords": "C# , Unity, PlaneFire","wordcount":  1474 ,
+        "url": "https:\/\/angle-z.com\/planefire_4\/","datePublished": "2022-02-22T17:16:53+08:00","dateModified": "2022-02-22T17:16:53+08:00","publisher": {
+            "@type": "Organization",
+            "name": "Angle-z","logo": "https:\/\/angle-z.com\/logo.jpg"},"author": {
+                "@type": "Person",
+                "name": "Angle-z"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Angle-z&#39;s Blog"><span class="header-title-pre">❤</span>Angle-z&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/links/"> Links </a><a class="menu-item" href="/about/"> About </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Angle-z&#39;s Blog"><span class="header-title-pre">❤</span>Angle-z&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/links/" title="">Links</a><a class="menu-item" href="/about/" title="">About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">PlaneFire_4</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://angle-z.com/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Angle-z</a></span>&nbsp;<span class="post-category">included in <a href="/categories/games/"><i class="far fa-folder fa-fw"></i>Games</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-02-22">2022-02-22</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1474 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;3 minutes&nbsp;<span id="/planefire_4/" class="leancloud_visitors" data-flag-title="PlaneFire_4">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#一实现效果">一、实现效果</a></li>
+    <li><a href="#二关键技术实现">二、关键技术实现</a>
+      <ul>
+        <li><a href="#1-持续按键但子弹不连续发射而是间隔时间发射">1、 持续按键，但子弹不连续发射，而是间隔时间发射</a></li>
+        <li><a href="#2设置一个随机血条不同血条代表的分值不同且当子弹击中怪物时血条会逐减">2、设置一个随机血条，不同血条代表的分值不同，且当子弹击中怪物时，血条会逐减。</a></li>
+        <li><a href="#3设置开始和结束界面">3、设置开始和结束界面</a></li>
+        <li><a href="#4如何在最后一个场景中得到前面场景对象的函数值">4、如何在最后一个场景中得到前面场景对象的函数/值</a></li>
+        <li><a href="#5实现陨石坠落">5、实现陨石坠落</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>「持续按键子弹间隔时间发射」「随机血条」「开始和结束界面」「在最后一个场景中得到前面场景对象的函数/值」「陨石坠落」</p>
+<h2 id="一实现效果">一、实现效果</h2>
+<p>开始界面：
+<img src="https://img-blog.csdnimg.cn/46f9b0dd8f524eb9b7ec5f985be6ac12.png" alt="在这里插入图片描述" style="zoom:50%;" />
+游戏界面：
+<img src="https://img-blog.csdnimg.cn/97618309c1af472db967ec842285882b.png" alt="在这里插入图片描述" style="zoom:50%;" />
+结束界面
+<img src="https://img-blog.csdnimg.cn/22bbbc24c57246b39bd694fba7316797.png" alt="在这里插入图片描述" style="zoom:50%;" /></p>
+<h2 id="二关键技术实现">二、关键技术实现</h2>
+<h3 id="1-持续按键但子弹不连续发射而是间隔时间发射">1、 持续按键，但子弹不连续发射，而是间隔时间发射</h3>
+<p>主要思路是在按下按键时，设置一个定时器</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">MyJet</span> <span class="p">:</span> <span class="n">MonoBehaviour</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="kt">float</span> <span class="n">deltaT</span> <span class="p">=</span> <span class="m">0.5f</span><span class="p">;</span><span class="c1">//设置一个你理想状态的子弹发射间隔时间
+</span><span class="c1"></span>    <span class="k">private</span> <span class="kt">float</span> <span class="n">InvokeTime</span><span class="p">;</span>
+    <span class="c1">// Start is called before the first frame update
+</span><span class="c1"></span>    <span class="k">void</span> <span class="n">Start</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">InvokeTime</span> <span class="p">=</span> <span class="n">deltaT</span><span class="p">;</span><span class="c1">//初始化
+</span><span class="c1"></span>    <span class="p">}</span>
+
+    <span class="c1">// Update is called once per frame
+</span><span class="c1"></span>    <span class="k">void</span> <span class="n">Update</span><span class="p">()</span>
+    <span class="p">{</span>
+       
+       
+        <span class="k">if</span> <span class="p">(</span><span class="n">Input</span><span class="p">.</span><span class="n">GetKey</span><span class="p">(</span><span class="n">KeyCode</span><span class="p">.</span><span class="n">Space</span><span class="p">))</span>
+        <span class="p">{</span>
+            <span class="n">InvokeTime</span> <span class="p">+=</span> <span class="n">Time</span><span class="p">.</span><span class="n">deltaTime</span><span class="p">;</span><span class="c1">//检查到空格键一直按下的时候会不断累加
+</span><span class="c1"></span>            <span class="k">if</span><span class="p">(</span><span class="n">InvokeTime</span><span class="p">&gt;</span><span class="n">deltaT</span><span class="p">)</span><span class="c1">//当累加到大于deltaT时便执行子弹发射
+</span><span class="c1"></span>            <span class="p">{</span>
+                <span class="n">Fire</span><span class="p">();</span><span class="c1">//发射子弹的函数，可替换
+</span><span class="c1"></span>                <span class="n">InvokeTime</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+            <span class="p">}</span>
+
+        <span class="p">}</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">Input</span><span class="p">.</span><span class="n">GetKeyUp</span><span class="p">(</span><span class="n">KeyCode</span><span class="p">.</span><span class="n">Space</span><span class="p">))</span>
+        <span class="p">{</span>
+            <span class="n">InvokeTime</span> <span class="p">=</span> <span class="n">deltaT</span><span class="p">;</span><span class="c1">//当空格键抬起时，将invokTime恢复原来值
+</span><span class="c1"></span>        <span class="p">}</span>
+
+    <span class="p">}</span>
+   
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="2设置一个随机血条不同血条代表的分值不同且当子弹击中怪物时血条会逐减">2、设置一个随机血条，不同血条代表的分值不同，且当子弹击中怪物时，血条会逐减。</h3>
+<p>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/24c7374decf843de840dac10babc11bc.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWnpf56iL5bqP5aqb,size_14,color_FFFFFF,t_70,g_se,x_16#pic_center" target="_blank" rel="noopener noreffer">https://img-blog.csdnimg.cn/24c7374decf843de840dac10babc11bc.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWnpf56iL5bqP5aqb,size_14,color_FFFFFF,t_70,g_se,x_16#pic_center</a>  =200x250)</p>
+<blockquote>
+<p>关键点1、找到/制作两个可重合的血条（白色背景，红色前景）</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="PlaneFire_4/6ac4b570165744208554cb62b1d0a867.png"
+        data-srcset="PlaneFire_4/6ac4b570165744208554cb62b1d0a867.png, PlaneFire_4/6ac4b570165744208554cb62b1d0a867.png 1.5x, PlaneFire_4/6ac4b570165744208554cb62b1d0a867.png 2x"
+        data-sizes="auto"
+        alt="PlaneFire_4/6ac4b570165744208554cb62b1d0a867.png"
+        title="在这里插入图片描述" /></p>
+</blockquote>
+<blockquote>
+<p>关键点2、将两个血条的中心轴定位在血条的==左边缘==（pivot=center Left）</p>
+</blockquote>
+<blockquote>
+<p>关键点3、将两个血条与原本怪物形成父子关系，并整体制作为预制体
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="PlaneFire_4/982154e6b21f42628e6a7f48bfb1066d.png"
+        data-srcset="PlaneFire_4/982154e6b21f42628e6a7f48bfb1066d.png, PlaneFire_4/982154e6b21f42628e6a7f48bfb1066d.png 1.5x, PlaneFire_4/982154e6b21f42628e6a7f48bfb1066d.png 2x"
+        data-sizes="auto"
+        alt="PlaneFire_4/982154e6b21f42628e6a7f48bfb1066d.png"
+        title="在这里插入图片描述" /></p>
+</blockquote>
+<p>代码实现：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">Monster</span> <span class="p">:</span> <span class="n">MonoBehaviour</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="kt">float</span> <span class="n">speed</span> <span class="p">=</span> <span class="m">1.0f</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="kt">int</span> <span class="k">value</span><span class="p">;</span> <span class="c1">// 价值 (1-5), 击杀此怪可以获得的加分
+</span><span class="c1"></span>
+    <span class="k">public</span> <span class="kt">int</span> <span class="n">hp</span><span class="p">;</span> <span class="c1">// 血量, 初始值为value
+</span><span class="c1"></span>
+    <span class="c1">// hp/value节点
+</span><span class="c1"></span>    <span class="k">private</span> <span class="n">Transform</span> <span class="n">hpNode</span><span class="p">;</span>
+
+    <span class="k">private</span> <span class="n">Transform</span> <span class="n">game</span><span class="p">;</span>
+
+    <span class="c1">// Start is called before the first frame update
+</span><span class="c1"></span>    <span class="k">void</span> <span class="n">Start</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// 节点名称
+</span><span class="c1"></span>        <span class="k">this</span><span class="p">.</span><span class="n">name</span> <span class="p">=</span> <span class="s">&#34;Monster&#34;</span><span class="p">;</span>
+
+        <span class="n">game</span> <span class="p">=</span> <span class="n">GameObject</span><span class="p">.</span><span class="n">Find</span><span class="p">(</span><span class="s">&#34;主控脚本&#34;</span><span class="p">).</span><span class="n">transform</span><span class="p">;</span>
+
+        <span class="c1">// 怪物的价值：1-5之间，随机指定
+</span><span class="c1"></span>        <span class="k">value</span> <span class="p">=</span> <span class="n">Random</span><span class="p">.</span><span class="n">Range</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">5</span><span class="p">)</span> <span class="p">+</span> <span class="m">1</span><span class="p">;</span>
+        <span class="n">hp</span> <span class="p">=</span> <span class="k">value</span><span class="p">;</span>
+
+        <span class="c1">// 血条显示
+</span><span class="c1"></span>        <span class="n">hpNode</span> <span class="p">=</span> <span class="n">transform</span><span class="p">.</span><span class="n">Find</span><span class="p">(</span><span class="s">&#34;hp/value&#34;</span><span class="p">);</span>
+        <span class="n">SetHealth</span><span class="p">(</span><span class="n">hp</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Update is called once per frame
+</span><span class="c1"></span>    <span class="k">void</span> <span class="n">Update</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="kt">float</span> <span class="n">dy</span> <span class="p">=</span> <span class="n">speed</span> <span class="p">*</span> <span class="n">Time</span><span class="p">.</span><span class="n">deltaTime</span><span class="p">;</span>
+        <span class="n">transform</span><span class="p">.</span><span class="n">Translate</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="p">-</span><span class="n">dy</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="n">Space</span><span class="p">.</span><span class="n">Self</span><span class="p">);</span>
+
+        <span class="n">Vector3</span> <span class="n">sp</span> <span class="p">=</span> <span class="n">Camera</span><span class="p">.</span><span class="n">main</span><span class="p">.</span><span class="n">WorldToScreenPoint</span><span class="p">(</span><span class="n">transform</span><span class="p">.</span><span class="n">position</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">sp</span><span class="p">.</span><span class="n">y</span><span class="p">&lt;</span> <span class="m">0</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">Destroy</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">gameObject</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="c1">// 更新HP显示
+</span><span class="c1"></span>    <span class="k">public</span> <span class="k">void</span> <span class="n">SetHealth</span><span class="p">(</span><span class="kt">int</span> <span class="n">hpValue</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">hpNode</span><span class="p">.</span><span class="n">localScale</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Vector3</span><span class="p">(</span><span class="n">hpValue</span> <span class="p">/</span> <span class="m">5f</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">);</span><span class="c1">//x轴上的比例缩小，与中心轴点位置有关，所以一定要设置好图片的中心点轴位置靠左，这样比例缩小时才会是那种效果
+</span><span class="c1"></span>    <span class="p">}</span>
+
+    <span class="k">private</span> <span class="k">void</span> <span class="n">OnTriggerEnter2D</span><span class="p">(</span><span class="n">Collider2D</span> <span class="n">collision</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">collision</span><span class="p">.</span><span class="n">name</span><span class="p">.</span><span class="n">Equals</span><span class="p">(</span><span class="s">&#34;Bullet&#34;</span><span class="p">))</span>
+        <span class="p">{</span>
+            <span class="c1">// 被子弹击中，HP-1
+</span><span class="c1"></span>            <span class="n">hp</span> <span class="p">-=</span> <span class="m">1</span><span class="p">;</span>
+            <span class="n">Destroy</span><span class="p">(</span><span class="n">collision</span><span class="p">.</span><span class="n">gameObject</span><span class="p">);</span>
+            <span class="c1">// 更新HP显示
+</span><span class="c1"></span>            <span class="n">SetHealth</span><span class="p">(</span><span class="n">hp</span><span class="p">);</span>
+
+            <span class="c1">// HP降为0时，自动销毁此怪
+</span><span class="c1"></span>            <span class="k">if</span> <span class="p">(</span><span class="n">hp</span> <span class="p">&lt;=</span> <span class="m">0</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">Destroy</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">gameObject</span><span class="p">);</span>
+                
+                <span class="c1">// 玩有得分 + this.value，这是传给在另外一个类的方法value的值。
+</span><span class="c1"></span>                <span class="n">game</span><span class="p">.</span><span class="n">SendMessage</span><span class="p">(</span><span class="s">&#34;AddScore&#34;</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="k">value</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="3设置开始和结束界面">3、设置开始和结束界面</h3>
+<p>开始和结束的场景需要创建
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="PlaneFire_4/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWnpf56iL5bqP5aqb,size_20,color_FFFFFF,t_70,g_se,x_16-20220222171750378.png"
+        data-srcset="PlaneFire_4/watermark%2ctype_ZHJvaWRzYW5zZmFsbGJhY2s%2cshadow_50%2ctext_Q1NETiBAWnpf56iL5bqP5aqb%2csize_20%2ccolor_FFFFFF%2ct_70%2cg_se%2cx_16-20220222171750378.png, PlaneFire_4/watermark%2ctype_ZHJvaWRzYW5zZmFsbGJhY2s%2cshadow_50%2ctext_Q1NETiBAWnpf56iL5bqP5aqb%2csize_20%2ccolor_FFFFFF%2ct_70%2cg_se%2cx_16-20220222171750378.png 1.5x, PlaneFire_4/watermark%2ctype_ZHJvaWRzYW5zZmFsbGJhY2s%2cshadow_50%2ctext_Q1NETiBAWnpf56iL5bqP5aqb%2csize_20%2ccolor_FFFFFF%2ct_70%2cg_se%2cx_16-20220222171750378.png 2x"
+        data-sizes="auto"
+        alt="PlaneFire_4/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWnpf56iL5bqP5aqb,size_20,color_FFFFFF,t_70,g_se,x_16-20220222171750378.png"
+        title="开始和结束场景" /></p>
+<p>设置场景顺序（Fire-&gt;BuildSetting-&gt;'+'）
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="PlaneFire_4/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWnpf56iL5bqP5aqb,size_20,color_FFFFFF,t_70,g_se,x_16-20220222171750413.png"
+        data-srcset="PlaneFire_4/watermark%2ctype_ZHJvaWRzYW5zZmFsbGJhY2s%2cshadow_50%2ctext_Q1NETiBAWnpf56iL5bqP5aqb%2csize_20%2ccolor_FFFFFF%2ct_70%2cg_se%2cx_16-20220222171750413.png, PlaneFire_4/watermark%2ctype_ZHJvaWRzYW5zZmFsbGJhY2s%2cshadow_50%2ctext_Q1NETiBAWnpf56iL5bqP5aqb%2csize_20%2ccolor_FFFFFF%2ct_70%2cg_se%2cx_16-20220222171750413.png 1.5x, PlaneFire_4/watermark%2ctype_ZHJvaWRzYW5zZmFsbGJhY2s%2cshadow_50%2ctext_Q1NETiBAWnpf56iL5bqP5aqb%2csize_20%2ccolor_FFFFFF%2ct_70%2cg_se%2cx_16-20220222171750413.png 2x"
+        data-sizes="auto"
+        alt="PlaneFire_4/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWnpf56iL5bqP5aqb,size_20,color_FFFFFF,t_70,g_se,x_16-20220222171750413.png"
+        title="在这里插入图片描述" /></p>
+<p>分别在开始和结束的场景中加入canvas
+<img src="https://img-blog.csdnimg.cn/96ef418b7135466ab158680e495f4505.png" alt="在这里插入图片描述" style="zoom:50%;" />
+<img src="https://img-blog.csdnimg.cn/684f49a8b00d4f2f8ff01f101ee13d09.png" alt="在这里插入图片描述" style="zoom:50%;" /></p>
+<blockquote>
+<p>==跳转函数==：
+<strong>UnityEngine.SceneManagement.SceneManager.LoadScene(0)</strong>;  //0代表场景顺序</p>
+</blockquote>
+<h3 id="4如何在最后一个场景中得到前面场景对象的函数值">4、如何在最后一个场景中得到前面场景对象的函数/值</h3>
+<blockquote>
+<p>我们知道，如果场景切换到下一个场景后，之前的<strong>场景对象会被销毁</strong>
+但是，若是我们想要得到前一个场景的值，需要保留上一个对象
+==永久保留对象的函数==：
+void Start()
+{</p>
+<blockquote>
+<p><strong>DontDestroyOnLoad(this.gameObject)</strong>;
+}</p>
+</blockquote>
+</blockquote>
+<h3 id="5实现陨石坠落">5、实现陨石坠落</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="PlaneFire_4/54c331c74b274019ac7c3af930c39259.png"
+        data-srcset="PlaneFire_4/54c331c74b274019ac7c3af930c39259.png, PlaneFire_4/54c331c74b274019ac7c3af930c39259.png 1.5x, PlaneFire_4/54c331c74b274019ac7c3af930c39259.png 2x"
+        data-sizes="auto"
+        alt="PlaneFire_4/54c331c74b274019ac7c3af930c39259.png"
+        title="在这里插入图片描述" /></p>
+<blockquote>
+<p>方法和前面的方法雷同，使陨石成为一个刚体、碰撞体、预制体，且挂一个脚本控制它的飞行方向、飞行速度和销毁事件，若飞机与陨石相撞、游戏结束。</p>
+</blockquote></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-02-22</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://angle-z.com/planefire_4/" data-title="PlaneFire_4" data-hashtags="C# ,Unity,PlaneFire"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://angle-z.com/planefire_4/" data-hashtag="C# "><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://angle-z.com/planefire_4/"><i class="fab fa-reddit fa-fw"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://angle-z.com/planefire_4/" data-title="PlaneFire_4"><i class="fab fa-weibo fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href=""></a>,&nbsp;<a href="/tags/unity/">Unity</a>,&nbsp;<a href="/tags/planefire/">PlaneFire</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/planefire_3/" class="prev" rel="prev" title="PlaneFire_3"><i class="fas fa-angle-left fa-fw"></i>PlaneFire_3</a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://angle-z.com/" target="_blank">Angle-z</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="/lib/lightgallery/lightgallery.min.css"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/valine/Valine.min.js"></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lightgallery.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-thumbnail.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-zoom.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":40},"comment":{"valine":{"appId":"Wor2X5QCP3gfiSJssXjU5Rjm-9Nh9j0Va","appKey":"EvEUWC9bLt2melcMGRC9PE8s","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"en","pageSize":10,"placeholder":"Your comment ...","recordIP":true,"visitor":true}},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":50,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
